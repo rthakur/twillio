@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Twilio;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+/*
+      $response = Twilio::message('+918288915916', 'Test');
+*/
+      return view('home');
     }
 }
