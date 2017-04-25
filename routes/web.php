@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index');
+
+Route::group(['prefix' => 'agent'],function(){
+    Route::get('/', 'AgentController@index');
+    Route::get('/create', 'AgentController@create');
+    Route::post('/store', 'AgentController@store');
+    Route::get('/delete/{id}', 'AgentController@destroy');
+});
+
+Route::group(['prefix' => 'lead'],function(){
+    Route::get('/', 'LeadController@index');
+    Route::get('/create', 'LeadController@create');
+    Route::post('/store', 'LeadController@store');
+    Route::get('/delete/{id}', 'LeadController@destroy');
 });
