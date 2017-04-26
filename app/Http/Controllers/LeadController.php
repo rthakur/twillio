@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Lead;
 use App\Agent;
 use App\LeadAgent;
+use Twilio;
 
 class LeadController extends Controller
 {
@@ -104,7 +105,9 @@ class LeadController extends Controller
 
     public function AssignLead(Request $request)
     {
-      if(! $request->message ) return back();
+      $agent = Agent::find($request->agentId);
+
+      if(! $request->message || !$agent) return back();
 
         $assignlead = LeadAgent::firstOrNew(['lead_id' => $request->leadId,'agent_id' => $request->agentId]);
         $assignlead->message = $request->message;
@@ -112,6 +115,9 @@ class LeadController extends Controller
         $assignlead->status = 0;
 
         $assignlead->save();
+
+
+        $response = Twilio::message($agent->phone_number, $request->message);
 
         return redirect::back()->with('success','Lead Assign successfully');
 

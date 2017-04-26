@@ -12,9 +12,9 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="Name">Name</label>
       <div class="col-md-4">
-      <input  name="name" type="text" placeholder="Name" class="form-control input-md">
+      <input  name="name" value="{{ old('name') }}" type="text" placeholder="Name" class="form-control input-md">
       @if($errors->has('name'))
-      <span>{{ $errors->first('name')}}</span>
+      <span class="error">{{ $errors->first('name')}}</span>
       @endif
       </div>
     </div>
@@ -22,9 +22,9 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="Phone">Phone</label>
       <div class="col-md-4">
-      <input  name="phone_number" type="text" placeholder="Phone" class="form-control input-md">
+      <input  name="phone_number" value="{{ old('phone_number') }}" type="text" placeholder="Phone" class="form-control input-md" maxlength="12">
       @if($errors->has('phone_number'))
-      <span>{{ $errors->first('phone_number')}}</span>
+      <span class="error">{{ $errors->first('phone_number')}}</span>
       @endif
       </div>
     </div>
