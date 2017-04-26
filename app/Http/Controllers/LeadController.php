@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Lead;
+use App\Agent;
+use App\LeadAgent;
 
 class LeadController extends Controller
 {
@@ -15,8 +17,9 @@ class LeadController extends Controller
      */
     public function index()
     {
-        $leads = Lead::all();
-        return view ('lead/list',compact('leads'));
+        $data['agents'] = Agent::all();
+        $data['leads'] = Lead::all();
+        return view ('lead/list',$data);
     }
 
     /**
@@ -38,7 +41,7 @@ class LeadController extends Controller
     public function store(Request $request)
     {
       $validator = \Validator::make($request->all(),[
-          'name' => 'required'
+          'name' => 'required|unique:leads'
       ]);
 
       if($validator->fails())
@@ -96,6 +99,21 @@ class LeadController extends Controller
         $lead = Lead::find($id);
         $lead->delete();
         return redirect::back();
+
+    }
+
+    public function AssignLead(Request $request)
+    {
+      if(! $request->message ) return back();
+
+        $assignlead = LeadAgent::firstOrNew(['lead_id' => $request->leadId,'agent_id' => $request->agentId]);
+        $assignlead->message = $request->message;
+        $assignlead->type = 0;
+        $assignlead->status = 0;
+
+        $assignlead->save();
+
+        return redirect::back()->with('success','Lead Assign successfully');
 
     }
 }

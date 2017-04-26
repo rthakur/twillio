@@ -29,4 +29,5 @@ Route::group(['prefix' => 'lead'],function(){
     Route::get('/create', 'LeadController@create');
     Route::post('/store', 'LeadController@store');
     Route::get('/delete/{id}', 'LeadController@destroy');
+    Route::post('/assign', 'LeadController@AssignLead');
 });

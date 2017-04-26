@@ -17,7 +17,7 @@ class CreateLeadAgentsTable extends Migration
             $table->increments('id');
             $table->integer('lead_id');
             $table->integer('agent_id');
-            $table->text('message');
+            $table->text('message')->nulable();
             $table->tinyInteger('type')->comment('1: for send, 0 for receive');
             $table->tinyInteger('status')->comment('1: for read, 0 for unread');
             $table->timestamps();

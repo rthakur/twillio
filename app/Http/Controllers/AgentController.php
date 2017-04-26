@@ -22,7 +22,7 @@ class AgentController extends Controller
     {
       $validator = \Validator::make($request->all(),[
           'name' => 'required',
-          'phone_number' => 'numeric'
+          'phone_number' => 'numeric|unique:agents'
       ]);
 
       if($validator->fails())
@@ -33,7 +33,7 @@ class AgentController extends Controller
         $agent->phone_number = $request->phone_number;
         $agent->save();
 
-        return redirect('/');
+        return redirect('/agent');
     }
 
     public function destroy($id)

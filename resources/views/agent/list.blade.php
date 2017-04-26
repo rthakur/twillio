@@ -10,7 +10,7 @@
          <div class="row">
                   <table class="table table-striped custab">
                   <thead>
-                  <a href="/agent/create" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new Agent</a>
+                  <a href="/agent/create" class="btn btn-primary pull-right">Add new Agent</a>
                       <tr>
                           <th>#</th>
                           <th>Name</th>

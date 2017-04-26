@@ -15,7 +15,7 @@ $url = Request::segment(1);
             </a>
             </li>
             <li @if(isset($url) && $url == 'lead')class="active" @endif>
-              <a href="lead" data-scroll="" class="">
+              <a href="/lead" data-scroll="" class="">
                   <span class="fa fa-anchor solo">Lead</span>
               </a>
             </li>
