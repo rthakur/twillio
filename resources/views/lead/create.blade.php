@@ -12,9 +12,9 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="Name">Name</label>
       <div class="col-md-4">
-      <input  name="name" type="text" placeholder="Name" class="form-control input-md">
+      <input  name="name" type="text" placeholder="Name" class="form-control input-md" value="{{ old('name') }}">
       @if($errors->has('name'))
-      <span>{{ $errors->first('name')}}</span>
+      <span class="error">{{ $errors->first('name')}}</span>
       @endif
       </div>
     </div>

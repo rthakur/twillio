@@ -14,7 +14,7 @@
       <div class="col-md-4">
       <input  name="name" value="{{ old('name') }}" type="text" placeholder="Name" class="form-control input-md">
       @if($errors->has('name'))
-      <span>{{ $errors->first('name')}}</span>
+      <span class="error">{{ $errors->first('name')}}</span>
       @endif
       </div>
     </div>
