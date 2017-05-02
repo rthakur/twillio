@@ -21,16 +21,14 @@ class AgentController extends Controller
     public function store(Request $request)
     {
       $validator = \Validator::make($request->all(),[
-          'name' => 'required',
-          'phone_number' => 'numeric|unique:agents'
-      ]);
+          'name' => 'required|unique:agents,name'
+        ]);
 
       if($validator->fails())
         return redirect::back()->withErrors($validator)->withInput();
 
         $agent = new Agent;
         $agent->name = $request->name;
-        $agent->phone_number = $request->phone_number;
         $agent->save();
 
         return redirect('/agent');

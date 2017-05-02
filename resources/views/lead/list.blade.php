@@ -27,7 +27,7 @@
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td>{{ $lead->name }}</td>
-                            <td class="text-center"><button class="btn btn-success btn-sm assign-agent" data-toggle="modal" data-target="#myModal"  data-id="{{$lead->id}}"> Assign Agent</button> | <a href="/lead/delete/{{$lead->id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?');"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td class="text-center"><button class="btn btn-success btn-sm assign-agent" data-toggle="modal" data-target="#myModal"  data-id="{{$lead->id}}"> Send Mail</button> | <a href="/lead/delete/{{$lead->id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?');"><span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                   @endforeach
                   @endif
@@ -61,14 +61,12 @@
             <label class="control-label" for="Message">Message : </label>
             <textarea  name="message" class="form-control" maxlength="160"></textarea>
           </div>
-          <div class="form-group">
-            <button class="btn btn-success">Assign</button>
-          </div>
         </div>
-      </form>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-success">Send</button>
       </div>
+    </form>
     </div>
 
   </div>
