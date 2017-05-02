@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+	return redirect('agent');	
 /*
       $response = Twilio::message('+918288915916', 'Test');
 */

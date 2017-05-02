@@ -41,7 +41,8 @@ class LeadController extends Controller
     public function store(Request $request)
     {
       $validator = \Validator::make($request->all(),[
-          'name' => 'required|unique:leads'
+          'name' => 'required|unique:leads',
+          'phone_number' => 'required',
       ]);
 
       if($validator->fails())
@@ -49,6 +50,7 @@ class LeadController extends Controller
 
         $lead = new Lead;
         $lead->name = $request->name;
+        $lead->phone_number = $request->phone_number;
         $lead->save();
 
         return redirect('/lead');
@@ -113,7 +115,7 @@ class LeadController extends Controller
 
         $assignlead->save();
 
-        return redirect::back()->with('success','Lead Assign successfully');
+        return redirect::back()->with('success','Message successfully Sent!');
 
     }
 }

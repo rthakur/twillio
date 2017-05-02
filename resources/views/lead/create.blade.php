@@ -18,6 +18,15 @@
       @endif
       </div>
     </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="Phone">Phone</label>
+      <div class="col-md-4">
+      <input  name="phone_number" type="text" placeholder="Phone" class="form-control input-md">
+      @if($errors->has('phone_number'))
+      <span>{{ $errors->first('phone_number')}}</span>
+      @endif
+      </div>
+    </div>
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="create"></label>

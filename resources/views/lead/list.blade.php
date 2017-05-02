@@ -19,6 +19,7 @@
                       <tr>
                           <th>#</th>
                           <th>Name</th>
+                          <th>Phone</th>
                           <th class="text-center">Action</th>
                       </tr>
                   </thead>
@@ -27,7 +28,8 @@
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td>{{ $lead->name }}</td>
-                            <td class="text-center"><button class="btn btn-success btn-sm assign-agent" data-toggle="modal" data-target="#myModal"  data-id="{{$lead->id}}"> Send Mail</button> | <a href="/lead/delete/{{$lead->id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?');"><span class="glyphicon glyphicon-trash"></span></a></td>
+                            <td>{{ $lead->phone_number }}</td>
+                            <td class="text-center"><button class="btn btn-success btn-sm assign-agent" data-toggle="modal" data-target="#myModal"  data-id="{{$lead->id}}"> Send Message</button> | <a href="/lead/delete/{{$lead->id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?');"><span class="glyphicon glyphicon-trash"></span></a></td>
                         </tr>
                   @endforeach
                   @endif
