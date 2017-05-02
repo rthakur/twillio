@@ -107,19 +107,20 @@ class LeadController extends Controller
 
     public function AssignLead(Request $request)
     {
-	
-	$lead = Lead::find($request->leadId);
-
+	    $lead = Lead::find($request->leadId);
       if(! $request->message || !$lead) return back();
 
         $assignlead = LeadAgent::firstOrNew(['lead_id' => $request->leadId,'agent_id' => $request->agentId]);
         $assignlead->message = $request->message;
         $assignlead->type = 0;
-        $assignlead->status = 0;
 
-        $assignlead->save();
-	
-	Twilio::message($lead->phone_number, $request->message);
-	return redirect::back()->with('success','Message successfully Sent!');
+        try{
+          $assignlead->status = 1;
+          $assignlead->save();
+          Twilio::message($lead->phone_number, $request->message);
+          return redirect::back()->with('success','Message successfully Sent!');
+        }catch(\Exception $e){
+          return redirect::back()->with('error',$e->getMessage());
+        }
     }
 }
